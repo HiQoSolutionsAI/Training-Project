@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "frontend/**/*.{js,ts,tsx,jsx,json,css,md}": [
+      "npm --prefix frontend run lint",
+      "npm --prefix frontend run format"
+    ],
+    "backend/**/*.{js,ts,tsx,jsx,json,css,md}": [
+      "npm --prefix backend run lint",
+      "npm --prefix backend run format"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0"
+  }
+}

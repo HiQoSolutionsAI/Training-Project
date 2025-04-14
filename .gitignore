@@ -1,0 +1,38 @@
+# Node modules
+frontend/node_modules/
+backend/node_modules/
+node_modules/
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+
+# Build outputs
+frontend/.next/
+frontend/out/
+backend/dist/
+backend/build/
+
+# Env files
+frontend/.env
+frontend/.env.local
+backend/.env
+backend/.env.local
+
+# TypeScript
+**/*.tsbuildinfo
+
+# Test coverage
+**/coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Husky internal files
+.husky/_
+
+# IDE settings
+.vscode/
+.idea/
