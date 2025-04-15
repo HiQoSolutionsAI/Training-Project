@@ -1,18 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useApiContext } from '@/contexts/apiContext';
+import { apiClient } from '@/lib/api';
 
 export default function Home() {
   interface User {
     name: string;
   }
 
+  const { baseUrl } = useApiContext();
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`)
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    apiClient
+      .get(baseUrl, '/users')
+      .then((data) => setUsers(data as User[]))
+      .catch((err) => console.log(err.message));
   }, []);
 
   return (
