@@ -5,13 +5,15 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://backend:3001
     ports:
       - '3000:3000'
     environment:
       - NODE_ENV=production
       - PORT=3000
       - HOSTNAME=0.0.0.0
-      - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - NEXT_PUBLIC_API_URL=http://backend:3001
     depends_on:
       - backend
 
@@ -19,6 +21,10 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      args:
+        DB_HOST: your-db-host
+        DB_PORT: 5432
+        FRONTEND_URL: http://frontend:3000
     ports:
       - '3001:3001'
     environment:
@@ -26,4 +32,4 @@ services:
       - PORT=3001
       - DB_HOST=your-db-host
       - DB_PORT=5432
-      - FRONTEND_URL=http://localhost:3000
+      - FRONTEND_URL=http://frontend:3000
